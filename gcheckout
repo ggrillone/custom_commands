@@ -1,0 +1,19 @@
+#!/bin/bash
+
+count=0
+branch_names=$(git branch | cut -c 3- | tr '\n' ',')
+IFS=','  read -r -a branch_arr <<< $branch_names
+IFS=' ' read -r -a branch_arr2 <<< $branch_arr
+
+for branch in ${branch_arr[@]}; do
+  let "count += 1"
+  echo "$count. $branch"
+done
+
+echo "Enter the number of the branch you want to checkout to: "
+
+read branch_number
+# need to -1 because array index starts at 0
+let "branch_number -= 1"
+
+git checkout ${branch_arr2[$branch_number]}

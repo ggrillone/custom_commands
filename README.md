@@ -29,7 +29,7 @@ insensitive. Without passing any flags it will list the file name, line number, 
 that matches in the file. By passing the `-f` flag as the first argument it will just list the file names
 that match the pattern.
 
-I have to credit granolocks who introduced my and taught me about the commands used in the script.
+I have to credit `granolocks` who introduced my and taught me about the commands used in the script.
 
 Example:
 

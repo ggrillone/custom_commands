@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ $1 = '-f' ]; then
+  grep -ri --color=auto "$2" ./* | cut  -d : -f1 | sort | uniq
+else
+  grep -rin --color=auto "$1"  ./*
+fi

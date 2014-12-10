@@ -10,6 +10,11 @@ This command I made because I'm lazy and was tired of writing out entire branch 
 This command will output all branch names for the current repository then you just need to enter the number
 corresponding to the branch name and it will switch to that branch.
 
+Flags:
+`-p`: After checking out to the branch you specify, it will also do a pull
+`-d`: After checking out to the branch you specify, it will attempt to delete the previous branch you were on. WARNING: This will delete the branch locally and remotely, it will stop itself from deleting the remote branch if a `git` error is thrown, i.e. `Branch is not fully merged..`
+**I don't recommend using just the delete `-d` flag, you should use `-p` as well whenever doing a delete unless you have already merged your local changes.**
+
 Example:
 
 ```
@@ -21,6 +26,12 @@ Enter the number of the branch you want to checkout to:
  => Switched to branch 'develop'
  => Your branch is up-to-date with 'origin/develop'.
 ````
+
+Example 2 (checkout and pull):
+`gcheckout -p`
+
+Example 3 (checkout, pull and delete):
+`gcheckout -p -d`
 
 ##search
 This command is used to `grep` recursively for a pattern that is passed in as an argument.

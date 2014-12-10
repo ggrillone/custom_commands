@@ -31,7 +31,8 @@ function gcheckout {
   # need to -1 because array index starts at 0
   let "branch_number -= 1"
 
-  git checkout ${branch_arr2[$branch_number]} # first switch branches..
+  # first switch branches..
+  git checkout ${branch_arr2[$branch_number]}
 
   if $run_git_pull && $run_branch_delete; then
     git pull origin ${branch_arr2[$branch_number]}
@@ -46,14 +47,23 @@ function gcheckout {
       echo "Switching back to $current_branch ..."
       git checkout $current_branch
     else
-      echo 'yay'
+      git push origin :${current_branch}
     fi
   elif $run_git_pull; then
-    echo 'just pull'
+    git pull origin ${branch_arr2[$branch_number]}
   elif $run_branch_delete; then
-    echo 'just delete'
-  else
-    echo 'just checkout'
+    # verify that there are no git issues with deleting the branch..
+    # Redirect stderr to stdout: https://stackoverflow.com/questions/2342826/how-to-pipe-stderr-and-not-stdout
+    can_delete=$(git branch -d ${current_branch} 2>&1 >/dev/null | grep -i 'error')
+
+    if [[ "${can_delete}" == *error* ]]; then
+      # output error and revert back to original branch
+      git branch -d ${current_branch} # current_branch is now the previous branch, a little confusing..
+      echo "Switching back to $current_branch ..."
+      git checkout $current_branch
+    else
+      git push origin :${current_branch}
+    fi
   fi
 }
 

@@ -11,7 +11,7 @@ current_branch=`git branch | grep '*'`
 current_branch="${current_branch:2}"
 
 function gcheckout {
-  echo 'gcheckout!'
+  # echo 'gcheckout!'
   count=0 # used to list numbers next to each branch name
   # take the output of 'git branch' and split each newline from the output
   # into an item in an array

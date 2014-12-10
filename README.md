@@ -38,6 +38,9 @@ Example 3 (checkout, pull and delete):
 
 `gcheckout -p -d`
 
+##gpull
+Another command for being lazy. Instead of typing out something like: `git pull origin my-annoyingly-long-branch-name`, just use `gpull` !  It will just pull the remote branch to your local branch (based on what branch you are currently on).
+
 ##search
 This command is used to `grep` recursively for a pattern that is passed in as an argument.
 By default it runs from the current directory, will search nested directories, and is case

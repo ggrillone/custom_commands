@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# get the current branch
+current_branch=`git branch | grep '*'`
+current_branch="${current_branch:2}"
+
+git pull origin $current_branch

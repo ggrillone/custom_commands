@@ -11,27 +11,27 @@ current_branch=`git branch | grep '*'`
 current_branch="${current_branch:2}"
 
 function gcheckout {
-  echo 'gcheckout!'
-  # count=0 # used to list numbers next to each branch name
-  # # take the output of 'git branch' and split each newline from the output
-  # # into an item in an array
-  # branch_names=$(git branch | cut -c 3- | tr '\n' ',')
-  # IFS=','  read -r -a branch_arr <<< $branch_names
-  # IFS=' ' read -r -a branch_arr2 <<< $branch_arr
+  # echo 'gcheckout!'
+  count=0 # used to list numbers next to each branch name
+  # take the output of 'git branch' and split each newline from the output
+  # into an item in an array
+  branch_names=$(git branch | cut -c 3- | tr '\n' ',')
+  IFS=','  read -r -a branch_arr <<< $branch_names
+  IFS=' ' read -r -a branch_arr2 <<< $branch_arr
 
-  # # Output branch options to user
-  # for branch in ${branch_arr[@]}; do
-  #   let "count += 1"
-  #   echo "$count. $branch"
-  # done
+  # Output branch options to user
+  for branch in ${branch_arr[@]}; do
+    let "count += 1"
+    echo "$count. $branch"
+  done
 
-  # echo "Enter the number of the branch you want to checkout to: "
+  echo "Enter the number of the branch you want to checkout to: "
 
-  # read branch_number # read user input
-  # # need to -1 because array index starts at 0
-  # let "branch_number -= 1"
+  read branch_number # read user input
+  # need to -1 because array index starts at 0
+  let "branch_number -= 1"
 
-  checkout ${branch_arr2[$branch_number]} # first switch branches..
+  git checkout ${branch_arr2[$branch_number]} # first switch branches..
 
   if $run_git_pull && $run_branch_delete; then
     git pull origin ${branch_arr2[$branch_number]}
@@ -77,6 +77,10 @@ if $run_branch_delete; then
   if [ "$yes_no_delete_branch_lowercase" = 'y' ] || [ "$yes_no_delete_branch_lowercase" = 'yes' ]; then
     gcheckout
   fi
+else
+  gcheckout
+fi
+ fi
 else
   gcheckout
 fi

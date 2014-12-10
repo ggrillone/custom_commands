@@ -80,7 +80,3 @@ if $run_branch_delete; then
 else
   gcheckout
 fi
- fi
-else
-  gcheckout
-fi

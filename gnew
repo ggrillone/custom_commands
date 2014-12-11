@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Simple less-typing method for creating a new branch and checking out to it
+
+if [ "${1}" = '' ]; then
+  echo 'Yo bitch, I need a branch name!'
+else
+  git checkout -b ${1}
+fi

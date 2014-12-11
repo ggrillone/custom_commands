@@ -45,6 +45,13 @@ Example:
 
 `gpull`
 
+##gnew
+A simple command that creates a new git branch and switches to that branch. Just a shorthand command so we don't have to type out `git checkout -b new_branch`.
+
+Example:
+
+`gnew my-new-branch`
+
 ##search
 This command is used to `grep` recursively for a pattern that is passed in as an argument.
 By default it runs from the current directory, will search nested directories, and is case

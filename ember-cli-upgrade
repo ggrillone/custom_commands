@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ "${1}" = '' ]; then
+  echo 'Please run the command again, passing in the ember-cli version you want to upgrade to'
+else
+  echo "Uninstalling your current ember-cli and installing version ${1}"
+  sudo npm uninstall -g ember-cli
+  sudo npm cache clean
+  bower cache clean
+  sudo npm install -g ember-cli@${1}
+  sudo rm -rf node_modules bower_components tmp dist
+  sudo npm install
+  bower install
+  echo "Ember cli upgrade complete. If you are seeing strange errors, one thing to note is that this command should be run from inside the root directory of your ember app."
+fi
+

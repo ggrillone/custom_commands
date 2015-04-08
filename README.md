@@ -77,3 +77,12 @@ $ search -f greg
  => ./file1.txt
  => ./some_rby.rb
 ````
+
+##ember-cli-upgrade
+This command just runs all of the commands necessary when upgrading ember-cli to a different version. It takes 1 paramater which is the version you want to upgrade to. Note: This command uses the sudo command and it also requires you to run it in the root directory of your Ember app.
+
+Example:
+
+```
+$ ember-cli-upgrade 0.2.3
+````

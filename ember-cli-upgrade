@@ -9,6 +9,7 @@ else
   bower cache clean
   sudo npm install -g ember-cli@${1}
   sudo rm -rf node_modules bower_components tmp dist
+  sudo npm install ember-cli@${1} --save-dev
   sudo npm install
   bower install
   echo "Ember cli upgrade complete. If you are seeing strange errors, one thing to note is that this command should be run from inside the root directory of your ember app."
